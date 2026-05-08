@@ -1,0 +1,20 @@
+# Qt Creator 生成的临时环境文件
+*.pro.user
+*.pro.user.*
+
+# 编译生成的构建目录（非常重要，避免传上百兆的无用文件）
+build/
+build-*/
+debug/
+release/
+Makefile
+Makefile.*
+*.o
+*.obj
+
+# 配置文件（绝对不要上传你的 API Key）
+config.ini
+
+# 操作系统自动生成的垃圾文件
+.DS_Store
+Thumbs.db
