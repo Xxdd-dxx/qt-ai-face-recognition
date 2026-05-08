@@ -32,6 +32,7 @@
 1.使用 Qt Creator 打开 image_recognition.pro 文件。
 
 2.右键项目选择 “执行 qmake”，然后点击运行。
+
 ##⚙️ 配置指南 (Configuration)
   为保障账号与数据安全，本程序源码中不内置任何第三方 API 密钥。你需要进行以下简单配置：
     1.注册获取密钥：前往 百度智能云控制台 - 人脸识别，创建应用并获取免费的 API Key 和 Secret Key。
