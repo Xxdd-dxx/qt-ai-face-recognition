@@ -41,18 +41,18 @@ ImageRecognition::ImageRecognition(QWidget *parent)
 
     refreshTimer = new QTimer(this);
     connect(refreshTimer, &QTimer::timeout, this, &ImageRecognition::takePicture);
-    refreshTimer->start(33); // 约 30 FPS，兼顾流畅度与性能
+    refreshTimer->start(33); // 约 30 帧，兼顾流畅度与性能
 
     netTimer = new QTimer(this);
     connect(netTimer, &QTimer::timeout, this, &ImageRecognition::controlWorker);
 
     // ==========================================
-    // 2. 企业级界面布局与样式 (Dashboard 风格)
+    // 2. 界面布局与样式
     // ==========================================
     this->resize(1280, 720);
-    this->setWindowTitle("AI 智能人脸识别监控系统 - 企业版");
+    this->setWindowTitle("AI 智能人脸识别监控系统");
 
-    finder->hide(); // 隐藏原生 finder，完全接管画面绘制
+    finder->hide(); // 隐藏原生 finder，接管画面绘制
 
     this->setStyleSheet(R"(
         QWidget { background-color: #1E1E2E; color: #CDD6F4; font-family: "Microsoft YaHei"; font-size: 14px; }
@@ -68,7 +68,7 @@ ImageRecognition::ImageRecognition(QWidget *parent)
         QScrollBar::handle:vertical:hover { background: #585B70; }
     )");
 
-    // 【布局调整】：增加底部边距，释放底部空间
+    // 【布局调整】：增加底部边距，增大底部空间
     QHBoxLayout* mainLayout = new QHBoxLayout(this);
     mainLayout->setContentsMargins(30, 30, 30, 50); // 底部 margin 设为 50
     mainLayout->setSpacing(25);
@@ -76,7 +76,7 @@ ImageRecognition::ImageRecognition(QWidget *parent)
     // 左侧：监控核心区
     QVBoxLayout* leftLayout = new QVBoxLayout();
 
-    // 【布局调整】：降低强行要求的高度，保持更科学的宽屏比例，避免撑爆底边
+    
     ui->label->setMinimumSize(800, 450);
     ui->label->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     ui->label->setAlignment(Qt::AlignCenter);
@@ -156,7 +156,7 @@ void ImageRecognition::showCamera(int id, QImage preview)
     img = preview;
 
     QPainter p(&preview);
-    QPen pen(QColor("#89B4FA")); // 科技蓝线框
+    QPen pen(QColor("#89B4FA")); 
     pen.setWidth(4);
     pen.setJoinStyle(Qt::RoundJoin);
     p.setPen(pen);
@@ -168,7 +168,7 @@ void ImageRecognition::showCamera(int id, QImage preview)
         font.setPixelSize(28);
         p.setFont(font);
 
-        p.setPen(QColor("#FFFFFF")); // 文字纯白
+        p.setPen(QColor("#FFFFFF")); 
         int textY = faceTop;
         for(const QString& text : qAsConst(cachedFaceLabels)) {
             p.drawText(faceLeft + faceWidth + 15, textY, text);
